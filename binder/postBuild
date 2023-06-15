@@ -1,0 +1,29 @@
+# install dataset
+
+wget https://datashare.mpcdf.mpg.de/s/vdthQcXwOASMya6
+
+python << EOF
+import os
+from pyiron_base import Project
+import shutil
+for project in os.listdir('DPD_data'):
+    if not project.endswith('.tar.gz'):
+        continue
+    print(project)
+    name = project[:-12]
+    shutil.copy2(os.path.join('DPD_data', project), '.')
+    shutil.copy2(os.path.join('DPD_data', f"{name}_export.csv"), 'export.csv')
+    pr = Project(name)
+    pr.unpack(f"{name}_data")
+    os.remove(project)
+    os.remove('export.csv')
+
+EOF
+
+# ngl view for jupyter
+jupyter nbextension install nglview --py --sys-prefix
+jupyter nbextension enable nglview --py --sys-prefix
+
+# ngl view for jupyter lab
+jupyter labextension install @jupyter-widgets/jupyterlab-manager --no-build
+jupyter labextension install nglview-js-widgets --minimize=False
