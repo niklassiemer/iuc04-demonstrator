@@ -1,6 +1,14 @@
-# install dataset
+# ngl view for jupyter
+jupyter nbextension install nglview --py --sys-prefix
+jupyter nbextension enable nglview --py --sys-prefix
 
-curl --user STxHUlxwsPe0FCY:"" https://datashare.mpcdf.mpg.de/public.php/webdav/ -o dpd_data.tar.gz
+# ngl view for jupyter lab
+jupyter labextension install @jupyter-widgets/jupyterlab-manager --no-build
+jupyter labextension install nglview-js-widgets --minimize=False
+
+# Download and install dataset
+
+curl --user 8T8WHAo1NLpgAkW:"" https://datashare.mpcdf.mpg.de/public.php/webdav/ -o dpd_data.tar.gz
 tar -xf dpd_data.tar.gz
 
 python << EOF
@@ -21,10 +29,3 @@ for project in os.listdir('DPD_data'):
 
 EOF
 
-# ngl view for jupyter
-jupyter nbextension install nglview --py --sys-prefix
-jupyter nbextension enable nglview --py --sys-prefix
-
-# ngl view for jupyter lab
-jupyter labextension install @jupyter-widgets/jupyterlab-manager --no-build
-jupyter labextension install nglview-js-widgets --minimize=False
