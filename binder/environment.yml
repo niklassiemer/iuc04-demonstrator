@@ -2,7 +2,7 @@ channels:
 - conda-forge
 dependencies:
 - python=3.10
-- pyiron_base=0.6.9
+- pyiron_base=0.6.1
 - pyiron_contrib=0.1.10
 - coscine
 - pyiron_gui
