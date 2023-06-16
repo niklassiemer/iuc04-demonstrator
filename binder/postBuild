@@ -44,5 +44,14 @@ for project in os.listdir('DPD_data'):
     os.remove(project)
     os.remove('export.csv')
 
+# fix pyiron tables looking for the analysis project
+
+from pyiron_base import ProjectHDFio
+pr_tables = Project('pr_tables/S7_GB_tables')
+for node in pr_tables.list_nodes():
+    input_hdf = ProjectHDFio(pr_tables, pr_tables.path + f'/{node}.h5', h5_path=node+'/input')
+    if 'project' in input_hdf.list_nodes():
+        del input_hdf['project']
+
 EOF
 
