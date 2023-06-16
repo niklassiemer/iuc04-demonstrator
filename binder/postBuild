@@ -23,6 +23,8 @@ tar -xvf dpd_data.tar.gz
 echo 'untar finished, current workspace:'
 ls -lrt
 
+cd ..
+
 echo 'run python to unpack'
 
 python << EOF
