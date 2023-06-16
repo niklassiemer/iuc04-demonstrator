@@ -1,3 +1,4 @@
+set -x
 # ngl view for jupyter
 jupyter nbextension install nglview --py --sys-prefix
 jupyter nbextension enable nglview --py --sys-prefix
@@ -9,13 +10,12 @@ jupyter labextension install nglview-js-widgets --minimize=False
 echo 'Download and install dataset'
 echo '############################'
 
+mkdir DPD_data
+cd DPD_data
 curl --user 8T8WHAo1NLpgAkW:"" https://datashare.mpcdf.mpg.de/public.php/webdav/ -o dpd_data.tar.gz
 
 echo 'curl finished; current workspace:'
 ls -lrt
-
-echo 'tar file content'
-tar --list -f dpd_data.tar.gz
 
 echo 'untar'
 tar -xvf dpd_data.tar.gz
