@@ -6,10 +6,24 @@ jupyter nbextension enable nglview --py --sys-prefix
 jupyter labextension install @jupyter-widgets/jupyterlab-manager --no-build
 jupyter labextension install nglview-js-widgets --minimize=False
 
-# Download and install dataset
+echo 'Download and install dataset'
+echo '############################'
 
 curl --user 8T8WHAo1NLpgAkW:"" https://datashare.mpcdf.mpg.de/public.php/webdav/ -o dpd_data.tar.gz
-tar -xf dpd_data.tar.gz
+
+echo 'curl finished; current workspace:'
+ls -lrt
+
+echo 'tar file content'
+tar --list -f dpd_data.tar.gz
+
+echo 'untar'
+tar -xvf dpd_data.tar.gz
+
+echo 'untar finished, current workspace:'
+ls -lrt
+
+echo 'run python to unpack'
 
 python << EOF
 import os
