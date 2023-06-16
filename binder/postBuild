@@ -19,6 +19,7 @@ ls -lrt
 
 echo 'untar'
 tar -xvf dpd_data.tar.gz
+rm dpd_data.tar.gz
 
 echo 'untar finished, current workspace:'
 ls -lrt
