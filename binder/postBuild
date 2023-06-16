@@ -1,6 +1,7 @@
 # install dataset
 
-wget https://datashare.mpcdf.mpg.de/s/vdthQcXwOASMya6
+curl --user STxHUlxwsPe0FCY:"" https://datashare.mpcdf.mpg.de/public.php/webdav/ -o dpd_data.tar.gz
+tar -xf dpd_data.tar.gz
 
 python << EOF
 import os

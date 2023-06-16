@@ -4,6 +4,8 @@ dependencies:
 - python
 - pyiron
 - pyiron_base
+- pyiron_contrib
+- pyiron_gui
 - pyiron_atomistics
 - lammps
 - iprpy-data
