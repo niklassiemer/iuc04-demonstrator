@@ -19,3 +19,4 @@ dependencies:
 - pyiron-data >=0.0.22
 - sqsgenerator
 - pymatgen
+- jinja2
