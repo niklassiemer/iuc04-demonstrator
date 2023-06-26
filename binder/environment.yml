@@ -6,7 +6,6 @@ dependencies:
 - pyiron_base=0.6.1
 - pyiron_contrib=0.1.10
 - coscine
-- pyiron_gui
 - pyiron_atomistics=0.3.0
 - lammps
 - iprpy-data
@@ -19,4 +18,3 @@ dependencies:
 - pyiron-data >=0.0.22
 - sqsgenerator
 - pymatgen
-- jinja2
