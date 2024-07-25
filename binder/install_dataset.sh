@@ -1,9 +1,3 @@
-echo 'Download and install dataset'
-echo '############################'
-
-mkdir DPD_data
-cd DPD_data
-curl --user 8T8WHAo1NLpgAkW:"" https://datashare.mpcdf.mpg.de/public.php/webdav/ -o dpd_data.tar.gz
 
 echo 'curl finished; current workspace:'
 ls -lrt
