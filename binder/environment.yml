@@ -4,7 +4,7 @@ channels:
 dependencies:
 - python=3.11
 - pyiron
-- pyiron_base=0.10.2
+- pyiron_base=0.10.1
 - pyiron_contrib=0.1.18
 - coscine
 - pyiron_atomistics=0.6.12
