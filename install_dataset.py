@@ -8,7 +8,7 @@ DPD_data_dir = 'DPD_data'
 DPD_tar_file = 'dpd_data.tar.gz'
 
 
-with requests.get('https://datashare.mpcdf.mpg.de/public.php/webdav/', auth=('8T8WHAo1NLpgAkW', ''), stram=True) as r:
+with requests.get('https://datashare.mpcdf.mpg.de/public.php/webdav/', auth=('8T8WHAo1NLpgAkW', ''), stream=True) as r:
     r.raise_for_status()
     with open(DPD_tar_file, 'wb') as f:
         for chunk in r.iter_content(chunk_size=8192): 
@@ -22,7 +22,6 @@ with tarfile.open(DPD_tar_file) as f:
 os.remove(DPD_tar_file)
 
 pr = Project('.')
-print(f'project to operate on: {pr} content: {pr.list_all()}')
 for project in os.listdir(DPD_data_dir):
     w_pr = Project('wdir')
     if not project.endswith('.tar.gz'):
@@ -30,14 +29,13 @@ for project in os.listdir(DPD_data_dir):
     print(f'Working on: {project}')
     name = project[:-len('_data.tar.gz')]
     
-    print(f'file: {project} content: {pr.list_all()}')
     shutil.copy2(os.path.join(DPD_data_dir, project), os.path.join(w_pr.path, project))
     with tarfile.open(os.path.join(w_pr.path, project)) as f:
         f.extractall(w_pr.path)
-    shutil.copy2(os.path.join(DPD_data_dir, f"{name}_export.csv"), os.path.join(w_pr.path, 'export.csv'))
+    to_copy_pr = w_pr.open(name + '_data')
+    shutil.copy2(os.path.join(DPD_data_dir, f"{name}_export.csv"), os.path.join(to_copy_pr.path, 'export.csv'))
     
-    print(f'file: {project} content after copy: {pr.list_all()}')
-    pr.open(name).unpack(w_pr.path)
+    pr.open(name).open(to_copy_pr.list_groups()[0]).unpack(w_pr.path)
     shutil.rmtree('wdir')
 
 # fix pyiron tables looking for the analysis project
