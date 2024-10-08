@@ -14,6 +14,7 @@ echo '############################'
 mkdir DPD_data
 cd DPD_data
 curl --user 8T8WHAo1NLpgAkW:"" https://datashare.mpcdf.mpg.de/public.php/webdav/ -o dpd_data.tar.gz
+cd ..
 
 #bash binder/install_dataset.sh
 python install_dataset.py
